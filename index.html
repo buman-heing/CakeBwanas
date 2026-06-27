@@ -1,0 +1,3144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, minimum-scale=1.0, viewport-fit=cover">
+<meta name="theme-color" content="#FAF6F1">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<meta name="format-detection" content="telephone=yes">
+<title>Cake Bwana's Confectionery | Lusaka, Zambia</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+<style>
+/* ========================================
+   CSS CUSTOM PROPERTIES & RESET
+   ======================================== */
+:root {
+  --cream: #FAF6F1;
+  --blush: #F2C4CE;
+  --blush-light: #FBF0F3;
+  --gold: #C9A84C;
+  --gold-light: #E8D5A3;
+  --gold-dark: #9E7A28;
+  --charcoal: #2C2C2C;
+  --charcoal-light: #5A5A5A;
+  --white: #FFFFFF;
+  --border: rgba(201,168,76,0.25);
+  --shadow: 0 4px 24px rgba(44,44,44,0.08);
+  --shadow-hover: 0 8px 40px rgba(44,44,44,0.15);
+  --radius: 4px;
+  --transition: 0.28s ease;
+
+  /* Touch target minimum — WCAG AA for mobile */
+  --touch-min: 48px;
+
+  /* Safe area insets for iPhone notch/Dynamic Island */
+  --safe-top: env(safe-area-inset-top, 0px);
+  --safe-bottom: env(safe-area-inset-bottom, 0px);
+  --safe-left: env(safe-area-inset-left, 0px);
+  --safe-right: env(safe-area-inset-right, 0px);
+}
+
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  -webkit-tap-highlight-color: transparent;
+  -webkit-touch-callout: none;
+}
+
+html {
+  font-size: 16px;
+  scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
+  -ms-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+}
+
+body {
+  font-family: 'DM Sans', sans-serif;
+  background: var(--cream);
+  color: var(--charcoal);
+  overflow-x: hidden;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  padding-top: var(--safe-top);
+  padding-bottom: var(--safe-bottom);
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+  object-fit: cover;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+button {
+  font-family: 'DM Sans', sans-serif;
+  cursor: pointer;
+  border: none;
+  background: none;
+  -webkit-appearance: none;
+  appearance: none;
+  touch-action: manipulation;
+}
+
+/* ========================================
+   TYPOGRAPHY
+   ======================================== */
+h1, h2, h3, h4 {
+  font-family: 'Cormorant Garamond', serif;
+  line-height: 1.15;
+  font-weight: 500;
+}
+
+.serif-italic {
+  font-style: italic;
+  font-family: 'Cormorant Garamond', serif;
+}
+
+.gold-text { color: var(--gold); }
+.cream-text { color: var(--cream); }
+
+/* ========================================
+   NAVBAR
+   ======================================== */
+#navbar {
+  position: fixed;
+  top: var(--safe-top);
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  background: rgba(250,246,241,0.96);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--border);
+  height: 64px;
+  display: flex;
+  align-items: center;
+  padding: 0 max(20px, var(--safe-left)) 0 max(20px, var(--safe-right));
+  transition: box-shadow var(--transition);
+}
+
+#navbar.scrolled {
+  box-shadow: 0 2px 20px rgba(44,44,44,0.08);
+}
+
+.nav-inner {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.nav-logo {
+  display: flex;
+  flex-direction: column;
+  line-height: 1;
+  cursor: pointer;
+  user-select: none;
+}
+
+.nav-logo-main {
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic;
+  font-size: clamp(18px, 4vw, 24px);
+  color: var(--charcoal);
+  letter-spacing: 0.01em;
+}
+
+.nav-logo-sub {
+  font-family: 'DM Sans', sans-serif;
+  font-size: clamp(8px, 1.8vw, 10px);
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: var(--gold);
+  font-weight: 500;
+  margin-top: 2px;
+}
+
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: clamp(16px, 3vw, 36px);
+  list-style: none;
+}
+
+.nav-links a {
+  font-size: 13px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  font-weight: 500;
+  color: var(--charcoal-light);
+  transition: color var(--transition);
+  padding: 4px 0;
+  position: relative;
+  white-space: nowrap;
+  min-height: var(--touch-min);
+  display: flex;
+  align-items: center;
+}
+
+.nav-links a::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0;
+  height: 1px;
+  background: var(--gold);
+  transition: width var(--transition);
+}
+
+.nav-links a:hover,
+.nav-links a.active {
+  color: var(--charcoal);
+}
+
+.nav-links a:hover::after,
+.nav-links a.active::after {
+  width: 100%;
+}
+
+/* Hamburger */
+.hamburger {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: var(--touch-min);
+  height: var(--touch-min);
+  gap: 5px;
+  padding: 8px;
+  border-radius: var(--radius);
+}
+
+.hamburger span {
+  display: block;
+  width: 22px;
+  height: 1.5px;
+  background: var(--charcoal);
+  transition: all 0.3s ease;
+  transform-origin: center;
+}
+
+.hamburger.open span:nth-child(1) {
+  transform: translateY(6.5px) rotate(45deg);
+}
+.hamburger.open span:nth-child(2) {
+  opacity: 0;
+  transform: scaleX(0);
+}
+.hamburger.open span:nth-child(3) {
+  transform: translateY(-6.5px) rotate(-45deg);
+}
+
+/* Mobile nav drawer */
+.mobile-nav {
+  display: none;
+  position: fixed;
+  top: calc(64px + var(--safe-top));
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: var(--cream);
+  z-index: 999;
+  flex-direction: column;
+  padding: 32px 28px;
+  gap: 8px;
+  overflow-y: auto;
+  transform: translateX(100%);
+  transition: transform 0.35s cubic-bezier(0.4,0,0.2,1);
+}
+
+.mobile-nav.open {
+  transform: translateX(0);
+}
+
+.mobile-nav a {
+  display: flex;
+  align-items: center;
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(28px, 7vw, 36px);
+  font-weight: 400;
+  color: var(--charcoal);
+  padding: 14px 0;
+  border-bottom: 1px solid var(--border);
+  transition: color var(--transition), padding-left var(--transition);
+  min-height: var(--touch-min);
+}
+
+.mobile-nav a:hover,
+.mobile-nav a.active {
+  color: var(--gold);
+  padding-left: 8px;
+}
+
+.mobile-nav-footer {
+  margin-top: auto;
+  padding-top: 32px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.mobile-nav-footer p {
+  font-size: 13px;
+  color: var(--charcoal-light);
+  letter-spacing: 0.05em;
+}
+
+/* ========================================
+   PAGE SYSTEM — SLIDE RIGHT TRANSITIONS
+   ======================================== */
+.page-wrapper {
+  padding-top: calc(64px + var(--safe-top));
+  min-height: 100vh;
+  overflow: hidden;
+}
+
+.page {
+  display: none;
+  opacity: 0;
+  position: absolute;
+  width: 100%;
+  top: calc(64px + var(--safe-top));
+  left: 0;
+}
+
+.page.active {
+  display: block;
+  position: relative;
+  top: 0;
+  animation: pageIn 0.38s cubic-bezier(0.4,0,0.2,1) forwards;
+}
+
+.page.slide-out {
+  display: block;
+  position: absolute;
+  animation: pageOut 0.38s cubic-bezier(0.4,0,0.2,1) forwards;
+  pointer-events: none;
+}
+
+@keyframes pageIn {
+  from { opacity: 0; transform: translateX(40px); }
+  to   { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes pageOut {
+  from { opacity: 1; transform: translateX(0); }
+  to   { opacity: 0; transform: translateX(-40px); }
+}
+
+/* ========================================
+   BUTTONS
+   ======================================== */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 14px 28px;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  border-radius: var(--radius);
+  transition: all var(--transition);
+  min-height: var(--touch-min);
+  min-width: 120px;
+  white-space: nowrap;
+  cursor: pointer;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+}
+
+.btn-gold {
+  background: var(--gold);
+  color: var(--white);
+  border: 1.5px solid var(--gold);
+}
+
+.btn-gold:hover {
+  background: var(--gold-dark);
+  border-color: var(--gold-dark);
+  transform: translateY(-1px);
+  box-shadow: 0 6px 20px rgba(201,168,76,0.35);
+}
+
+.btn-outline {
+  background: transparent;
+  color: var(--charcoal);
+  border: 1.5px solid var(--charcoal);
+}
+
+.btn-outline:hover {
+  background: var(--charcoal);
+  color: var(--white);
+  transform: translateY(-1px);
+}
+
+.btn-outline-gold {
+  background: transparent;
+  color: var(--gold);
+  border: 1.5px solid var(--gold);
+}
+
+.btn-outline-gold:hover {
+  background: var(--gold);
+  color: var(--white);
+}
+
+/* ========================================
+   SECTION LAYOUT
+   ======================================== */
+.section {
+  padding: clamp(48px, 8vw, 96px) clamp(20px, 5vw, 60px);
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.section-full {
+  padding: clamp(48px, 8vw, 96px) 0;
+}
+
+.section-title {
+  text-align: center;
+  margin-bottom: clamp(36px, 6vw, 64px);
+}
+
+.section-title h2 {
+  font-size: clamp(32px, 6vw, 54px);
+  color: var(--charcoal);
+  margin-bottom: 12px;
+}
+
+.section-title .subtitle {
+  font-size: clamp(13px, 2vw, 15px);
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--gold);
+  font-weight: 500;
+  margin-bottom: 12px;
+  display: block;
+}
+
+.section-title p {
+  font-size: clamp(14px, 2.5vw, 16px);
+  color: var(--charcoal-light);
+  max-width: 520px;
+  margin: 0 auto;
+  line-height: 1.7;
+}
+
+.divider {
+  width: 48px;
+  height: 1px;
+  background: var(--gold);
+  margin: 16px auto;
+}
+
+/* ========================================
+   ===== HOME PAGE =====
+   ======================================== */
+
+/* HERO */
+.hero {
+  position: relative;
+  min-height: calc(100svh - 64px);
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+  background: var(--cream);
+}
+
+.hero-bg {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, #FAF6F1 0%, #FBF0F3 50%, #FAF6F1 100%);
+}
+
+.hero-pattern {
+  position: absolute;
+  inset: 0;
+  opacity: 0.04;
+  background-image: radial-gradient(circle, var(--gold) 1px, transparent 1px);
+  background-size: 32px 32px;
+}
+
+.hero-inner {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: clamp(40px, 8vw, 80px) clamp(20px, 5vw, 60px);
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: clamp(32px, 5vw, 64px);
+  align-items: center;
+}
+
+.hero-content {
+  animation: fadeUp 0.7s ease 0.1s both;
+}
+
+.hero-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 11px;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: var(--gold);
+  font-weight: 600;
+  margin-bottom: 20px;
+  padding: 8px 16px;
+  border: 1px solid var(--border);
+  border-radius: 2px;
+  background: rgba(201,168,76,0.06);
+}
+
+.hero-content h1 {
+  font-size: clamp(38px, 7vw, 72px);
+  color: var(--charcoal);
+  line-height: 1.08;
+  margin-bottom: 20px;
+}
+
+.hero-content h1 em {
+  color: var(--gold);
+  font-style: italic;
+}
+
+.hero-content p {
+  font-size: clamp(15px, 2.2vw, 18px);
+  color: var(--charcoal-light);
+  line-height: 1.75;
+  margin-bottom: 36px;
+  max-width: 440px;
+}
+
+.hero-ctas {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px;
+}
+
+.hero-stats {
+  display: flex;
+  gap: clamp(20px, 4vw, 40px);
+  margin-top: 48px;
+  padding-top: 32px;
+  border-top: 1px solid var(--border);
+}
+
+.stat-item {
+  display: flex;
+  flex-direction: column;
+}
+
+.stat-num {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(24px, 4vw, 36px);
+  color: var(--charcoal);
+  font-weight: 500;
+  line-height: 1;
+}
+
+.stat-label {
+  font-size: 11px;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--charcoal-light);
+  margin-top: 4px;
+}
+
+.hero-image-wrap {
+  position: relative;
+  animation: fadeUp 0.7s ease 0.25s both;
+}
+
+.hero-image-main {
+  width: 100%;
+  aspect-ratio: 4/5;
+  object-fit: cover;
+  border-radius: 2px;
+  box-shadow: var(--shadow-hover);
+}
+
+.hero-image-accent {
+  position: absolute;
+  bottom: -24px;
+  left: -24px;
+  width: 45%;
+  aspect-ratio: 1;
+  object-fit: cover;
+  border-radius: 2px;
+  box-shadow: var(--shadow-hover);
+  border: 4px solid var(--cream);
+}
+
+.hero-gold-bar {
+  position: absolute;
+  top: -12px;
+  right: -12px;
+  width: 60%;
+  height: 60%;
+  border: 1px solid var(--border);
+  border-radius: 2px;
+  z-index: -1;
+}
+
+/* FEATURED CAKES */
+.featured-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: clamp(16px, 3vw, 28px);
+}
+
+.cake-card {
+  background: var(--white);
+  border-radius: var(--radius);
+  overflow: hidden;
+  box-shadow: var(--shadow);
+  transition: transform var(--transition), box-shadow var(--transition);
+  cursor: pointer;
+}
+
+.cake-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-hover);
+}
+
+.cake-card-img {
+  width: 100%;
+  aspect-ratio: 4/3;
+  object-fit: cover;
+  transition: transform 0.4s ease;
+}
+
+.cake-card:hover .cake-card-img {
+  transform: scale(1.03);
+}
+
+.cake-card-body {
+  padding: clamp(16px, 3vw, 24px);
+}
+
+.cake-card-tag {
+  font-size: 10px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--gold);
+  font-weight: 600;
+  margin-bottom: 8px;
+  display: block;
+}
+
+.cake-card-body h3 {
+  font-size: clamp(18px, 3vw, 24px);
+  margin-bottom: 8px;
+}
+
+.cake-card-body p {
+  font-size: 14px;
+  color: var(--charcoal-light);
+  line-height: 1.6;
+  margin-bottom: 16px;
+}
+
+.cake-card-price {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 20px;
+  color: var(--gold);
+  font-weight: 500;
+}
+
+/* ABOUT TEASER */
+.about-teaser {
+  background: var(--charcoal);
+  color: var(--white);
+  padding: clamp(48px, 8vw, 96px) clamp(20px, 5vw, 60px);
+}
+
+.about-teaser-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: clamp(32px, 6vw, 80px);
+  align-items: center;
+}
+
+.about-teaser-img {
+  position: relative;
+}
+
+.about-teaser-img img {
+  width: 100%;
+  aspect-ratio: 3/4;
+  object-fit: cover;
+  border-radius: 2px;
+}
+
+.about-teaser-img-accent {
+  position: absolute;
+  top: -16px;
+  right: -16px;
+  width: 55%;
+  aspect-ratio: 1;
+  object-fit: cover;
+  border-radius: 2px;
+  border: 3px solid var(--charcoal);
+}
+
+.about-teaser-content .subtitle {
+  color: var(--gold);
+}
+
+.about-teaser-content h2 {
+  font-size: clamp(30px, 5vw, 48px);
+  color: var(--white);
+  margin: 12px 0 20px;
+}
+
+.about-teaser-content p {
+  font-size: clamp(14px, 2vw, 16px);
+  color: rgba(255,255,255,0.7);
+  line-height: 1.8;
+  margin-bottom: 16px;
+}
+
+.about-teaser-content .bemba {
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic;
+  font-size: clamp(18px, 3vw, 24px);
+  color: var(--gold-light);
+  margin: 24px 0;
+  padding-left: 20px;
+  border-left: 2px solid var(--gold);
+}
+
+/* CATEGORIES */
+.categories-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: clamp(12px, 2vw, 20px);
+}
+
+.cat-card {
+  position: relative;
+  aspect-ratio: 3/4;
+  overflow: hidden;
+  border-radius: var(--radius);
+  cursor: pointer;
+}
+
+.cat-card img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s ease;
+}
+
+.cat-card:hover img {
+  transform: scale(1.06);
+}
+
+.cat-card-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(44,44,44,0.85) 0%, transparent 55%);
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: clamp(12px, 3vw, 20px);
+}
+
+.cat-card-overlay h3 {
+  font-size: clamp(16px, 2.5vw, 22px);
+  color: var(--white);
+  margin-bottom: 4px;
+}
+
+.cat-card-overlay span {
+  font-size: 12px;
+  color: var(--gold-light);
+  letter-spacing: 0.1em;
+}
+
+/* FAQ */
+.faq-list {
+  max-width: 760px;
+  margin: 0 auto;
+}
+
+.faq-item {
+  border-bottom: 1px solid var(--border);
+}
+
+.faq-question {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: clamp(16px, 3vw, 22px) 0;
+  text-align: left;
+  font-family: 'DM Sans', sans-serif;
+  font-size: clamp(14px, 2.5vw, 16px);
+  font-weight: 500;
+  color: var(--charcoal);
+  gap: 16px;
+  min-height: var(--touch-min);
+  cursor: pointer;
+  background: none;
+  border: none;
+}
+
+.faq-icon {
+  width: 28px;
+  height: 28px;
+  min-width: 28px;
+  border: 1px solid var(--border);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 18px;
+  color: var(--gold);
+  transition: transform var(--transition);
+  line-height: 1;
+}
+
+.faq-item.open .faq-icon {
+  transform: rotate(45deg);
+}
+
+.faq-answer {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.35s ease, padding 0.35s ease;
+}
+
+.faq-answer-inner {
+  padding-bottom: 20px;
+  font-size: clamp(14px, 2vw, 15px);
+  color: var(--charcoal-light);
+  line-height: 1.75;
+}
+
+.faq-item.open .faq-answer {
+  max-height: 400px;
+}
+
+/* ========================================
+   ===== MENU PAGE =====
+   ======================================== */
+.menu-hero {
+  background: linear-gradient(135deg, #FAF6F1 0%, #FBF0F3 100%);
+  text-align: center;
+  padding: clamp(48px, 8vw, 80px) clamp(20px, 5vw, 60px) clamp(32px, 5vw, 48px);
+}
+
+.menu-hero h1 {
+  font-size: clamp(36px, 7vw, 64px);
+  margin-bottom: 12px;
+}
+
+.menu-hero p {
+  font-size: clamp(14px, 2.5vw, 16px);
+  color: var(--charcoal-light);
+  max-width: 500px;
+  margin: 0 auto;
+  line-height: 1.7;
+}
+
+.menu-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(min(300px, 100%), 1fr));
+  gap: clamp(16px, 3vw, 28px);
+}
+
+.menu-card {
+  background: var(--white);
+  border-radius: var(--radius);
+  overflow: hidden;
+  box-shadow: var(--shadow);
+  display: flex;
+  flex-direction: column;
+  transition: transform var(--transition), box-shadow var(--transition);
+}
+
+.menu-card:hover {
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-hover);
+}
+
+.menu-card img {
+  width: 100%;
+  aspect-ratio: 16/10;
+  object-fit: cover;
+}
+
+.menu-card-body {
+  padding: clamp(16px, 3vw, 24px);
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.menu-card-tag {
+  font-size: 10px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--gold);
+  font-weight: 600;
+  margin-bottom: 8px;
+}
+
+.menu-card-body h3 {
+  font-size: clamp(20px, 3vw, 26px);
+  margin-bottom: 10px;
+}
+
+.menu-card-body p {
+  font-size: 14px;
+  color: var(--charcoal-light);
+  line-height: 1.65;
+  flex: 1;
+  margin-bottom: 20px;
+}
+
+.menu-card-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 12px;
+  padding-top: 16px;
+  border-top: 1px solid var(--border);
+}
+
+.menu-card-price {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 22px;
+  color: var(--gold);
+}
+
+.btn-wa-sm {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 10px 18px;
+  background: #25D366;
+  color: var(--white);
+  border-radius: var(--radius);
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  transition: all var(--transition);
+  min-height: 40px;
+  white-space: nowrap;
+}
+
+.btn-wa-sm:hover {
+  background: #1da855;
+  transform: translateY(-1px);
+}
+
+/* ========================================
+   ===== GALLERY PAGE =====
+   ======================================== */
+.gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: clamp(8px, 1.5vw, 14px);
+  padding: 0 clamp(16px, 4vw, 48px) clamp(48px, 8vw, 80px);
+}
+
+.gallery-item {
+  position: relative;
+  aspect-ratio: 1;
+  overflow: hidden;
+  cursor: pointer;
+  background: var(--blush-light);
+}
+
+.gallery-item:nth-child(5) {
+  grid-column: span 2;
+  aspect-ratio: 2/1;
+}
+
+.gallery-item:nth-child(8) {
+  grid-column: span 2;
+  aspect-ratio: 2/1;
+}
+
+.gallery-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.4s ease;
+}
+
+.gallery-item:hover img {
+  transform: scale(1.05);
+}
+
+.gallery-item-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(44,44,44,0);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background var(--transition);
+}
+
+.gallery-item:hover .gallery-item-overlay {
+  background: rgba(44,44,44,0.3);
+}
+
+.gallery-zoom-icon {
+  color: var(--white);
+  font-size: 24px;
+  opacity: 0;
+  transform: scale(0.7);
+  transition: all var(--transition);
+}
+
+.gallery-item:hover .gallery-zoom-icon {
+  opacity: 1;
+  transform: scale(1);
+}
+
+/* Lightbox */
+.lightbox {
+  display: none;
+  position: fixed;
+  inset: 0;
+  z-index: 9000;
+  background: rgba(20,20,20,0.95);
+  align-items: center;
+  justify-content: center;
+  padding: clamp(16px, 4vw, 40px);
+}
+
+.lightbox.open {
+  display: flex;
+}
+
+.lightbox img {
+  max-width: 100%;
+  max-height: 90svh;
+  object-fit: contain;
+  border-radius: var(--radius);
+  animation: lightboxIn 0.25s ease;
+}
+
+@keyframes lightboxIn {
+  from { opacity: 0; transform: scale(0.92); }
+  to   { opacity: 1; transform: scale(1); }
+}
+
+.lightbox-close {
+  position: absolute;
+  top: max(16px, var(--safe-top));
+  right: max(16px, var(--safe-right));
+  width: 48px;
+  height: 48px;
+  background: rgba(255,255,255,0.1);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--white);
+  font-size: 22px;
+  cursor: pointer;
+  transition: background var(--transition);
+}
+
+.lightbox-close:hover {
+  background: rgba(255,255,255,0.2);
+}
+
+.lightbox-nav {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 48px;
+  height: 48px;
+  background: rgba(255,255,255,0.1);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--white);
+  font-size: 20px;
+  cursor: pointer;
+  transition: background var(--transition);
+}
+
+.lightbox-nav:hover { background: rgba(255,255,255,0.2); }
+.lightbox-prev { left: max(12px, var(--safe-left)); }
+.lightbox-next { right: max(12px, var(--safe-right)); }
+
+/* ========================================
+   ===== PRICING PAGE =====
+   ======================================== */
+.pricing-hero {
+  background: linear-gradient(135deg, var(--charcoal) 0%, #3d3535 100%);
+  text-align: center;
+  padding: clamp(48px, 8vw, 80px) clamp(20px, 5vw, 60px) clamp(32px, 5vw, 48px);
+  color: var(--white);
+}
+
+.pricing-hero h1 { color: var(--white); font-size: clamp(36px, 7vw, 64px); margin-bottom: 12px; }
+.pricing-hero p { color: rgba(255,255,255,0.65); max-width: 480px; margin: 0 auto; }
+.pricing-hero .subtitle { color: var(--gold); }
+
+.pricing-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(min(280px, 100%), 1fr));
+  gap: clamp(16px, 3vw, 24px);
+}
+
+.price-card {
+  background: var(--white);
+  border-radius: var(--radius);
+  padding: clamp(24px, 4vw, 36px);
+  box-shadow: var(--shadow);
+  border: 1.5px solid transparent;
+  transition: all var(--transition);
+  position: relative;
+  overflow: hidden;
+}
+
+.price-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, var(--blush), var(--gold));
+  opacity: 0;
+  transition: opacity var(--transition);
+}
+
+.price-card:hover {
+  border-color: var(--border);
+  box-shadow: var(--shadow-hover);
+  transform: translateY(-3px);
+}
+
+.price-card:hover::before { opacity: 1; }
+
+.price-card.featured {
+  border-color: var(--gold);
+  background: linear-gradient(135deg, #FAF6F1 0%, #FBF0F3 100%);
+}
+
+.price-card.featured::before { opacity: 1; }
+
+.price-featured-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 10px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--gold);
+  font-weight: 600;
+  margin-bottom: 12px;
+  padding: 5px 12px;
+  background: rgba(201,168,76,0.1);
+  border-radius: 2px;
+}
+
+.price-card-icon {
+  font-size: 32px;
+  margin-bottom: 12px;
+  display: block;
+}
+
+.price-card h3 {
+  font-size: clamp(20px, 3vw, 26px);
+  margin-bottom: 8px;
+}
+
+.price-card-desc {
+  font-size: 14px;
+  color: var(--charcoal-light);
+  margin-bottom: 20px;
+  line-height: 1.6;
+}
+
+.price-tiers {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-bottom: 24px;
+}
+
+.price-tier {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 14px;
+  background: rgba(250,246,241,0.8);
+  border-radius: var(--radius);
+  border: 1px solid var(--border);
+}
+
+.price-tier-label {
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--charcoal);
+}
+
+.price-tier-amount {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 20px;
+  color: var(--gold);
+  font-weight: 500;
+}
+
+.price-single {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(28px, 5vw, 40px);
+  color: var(--gold);
+  margin-bottom: 20px;
+  display: block;
+}
+
+/* Payment methods */
+.payment-section {
+  background: var(--charcoal);
+  padding: clamp(40px, 7vw, 72px) clamp(20px, 5vw, 60px);
+}
+
+.payment-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.payment-inner h2 {
+  font-size: clamp(28px, 5vw, 42px);
+  color: var(--white);
+  margin-bottom: 12px;
+}
+
+.payment-inner .subtitle { color: var(--gold); }
+.payment-inner p { color: rgba(255,255,255,0.6); margin-bottom: 36px; }
+
+.payment-methods {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(180px, 100%), 1fr));
+  gap: clamp(12px, 2vw, 20px);
+}
+
+.payment-method {
+  background: rgba(255,255,255,0.05);
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: var(--radius);
+  padding: clamp(20px, 3vw, 28px) clamp(16px, 2.5vw, 24px);
+  text-align: center;
+  transition: all var(--transition);
+}
+
+.payment-method:hover {
+  background: rgba(255,255,255,0.09);
+  border-color: var(--gold);
+}
+
+.payment-method-icon { font-size: 28px; margin-bottom: 10px; display: block; }
+.payment-method h4 { font-size: 15px; color: var(--white); font-family: 'DM Sans', sans-serif; font-weight: 500; margin-bottom: 6px; }
+.payment-method p { font-size: 12px; color: rgba(255,255,255,0.45); line-height: 1.5; margin: 0; }
+
+/* Lead time banner */
+.lead-banner {
+  background: linear-gradient(135deg, var(--blush-light) 0%, #FAF6F1 100%);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: clamp(24px, 4vw, 36px);
+  text-align: center;
+  max-width: 700px;
+  margin: 0 auto;
+}
+
+.lead-banner h3 {
+  font-size: clamp(22px, 4vw, 32px);
+  color: var(--charcoal);
+  margin-bottom: 10px;
+}
+
+.lead-banner p {
+  font-size: 14px;
+  color: var(--charcoal-light);
+  margin-bottom: 20px;
+  line-height: 1.7;
+}
+
+/* ========================================
+   ===== ABOUT PAGE =====
+   ======================================== */
+.about-hero {
+  min-height: 50svh;
+  display: flex;
+  align-items: center;
+  background: linear-gradient(135deg, var(--charcoal) 0%, #3d3535 100%);
+  padding: clamp(48px, 8vw, 96px) clamp(20px, 5vw, 60px);
+  text-align: center;
+  color: var(--white);
+}
+
+.about-hero-inner {
+  max-width: 700px;
+  margin: 0 auto;
+}
+
+.about-hero h1 {
+  font-size: clamp(36px, 7vw, 64px);
+  color: var(--white);
+  margin-bottom: 16px;
+}
+
+.about-hero p {
+  font-size: clamp(15px, 2.5vw, 18px);
+  color: rgba(255,255,255,0.7);
+  line-height: 1.8;
+}
+
+.about-story {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: clamp(32px, 6vw, 80px);
+  align-items: center;
+}
+
+.about-story-imgs {
+  position: relative;
+}
+
+.about-story-img-main {
+  width: 100%;
+  aspect-ratio: 3/4;
+  object-fit: cover;
+  border-radius: var(--radius);
+}
+
+.about-story-img-accent {
+  position: absolute;
+  bottom: -20px;
+  right: -20px;
+  width: 52%;
+  aspect-ratio: 1;
+  object-fit: cover;
+  border-radius: var(--radius);
+  border: 4px solid var(--cream);
+  box-shadow: var(--shadow);
+}
+
+.about-story-content .subtitle { color: var(--gold); display: block; margin-bottom: 12px; }
+.about-story-content h2 { font-size: clamp(28px, 5vw, 44px); margin-bottom: 20px; }
+.about-story-content p { font-size: clamp(14px, 2vw, 16px); color: var(--charcoal-light); line-height: 1.8; margin-bottom: 16px; }
+
+.about-story-content .bemba-quote {
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic;
+  font-size: clamp(18px, 3vw, 24px);
+  color: var(--gold-dark);
+  border-left: 3px solid var(--gold);
+  padding-left: 20px;
+  margin: 28px 0;
+  line-height: 1.5;
+}
+
+.values-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(200px, 100%), 1fr));
+  gap: clamp(16px, 3vw, 24px);
+}
+
+.value-card {
+  padding: clamp(24px, 4vw, 32px);
+  background: var(--white);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  text-align: center;
+  border-top: 3px solid var(--gold);
+  transition: transform var(--transition);
+}
+
+.value-card:hover { transform: translateY(-3px); }
+.value-card-icon { font-size: 32px; margin-bottom: 14px; display: block; }
+.value-card h3 { font-size: clamp(18px, 2.5vw, 22px); margin-bottom: 8px; }
+.value-card p { font-size: 13px; color: var(--charcoal-light); line-height: 1.65; }
+
+/* ========================================
+   ===== CONTACT PAGE =====
+   ======================================== */
+.contact-hero {
+  background: linear-gradient(135deg, #FAF6F1 0%, #FBF0F3 100%);
+  text-align: center;
+  padding: clamp(48px, 8vw, 80px) clamp(20px, 5vw, 60px) clamp(32px, 5vw, 48px);
+}
+
+.contact-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: clamp(32px, 6vw, 64px);
+  align-items: start;
+}
+
+.contact-info-card {
+  background: var(--white);
+  border-radius: var(--radius);
+  padding: clamp(28px, 5vw, 44px);
+  box-shadow: var(--shadow);
+}
+
+.contact-info-card h3 {
+  font-size: clamp(22px, 4vw, 30px);
+  margin-bottom: 24px;
+}
+
+.contact-detail {
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
+  padding: 16px 0;
+  border-bottom: 1px solid var(--border);
+}
+
+.contact-detail:last-child { border-bottom: none; }
+
+.contact-detail-icon {
+  width: 44px;
+  height: 44px;
+  min-width: 44px;
+  background: var(--blush-light);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 18px;
+}
+
+.contact-detail-text h4 {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 12px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--gold);
+  font-weight: 600;
+  margin-bottom: 4px;
+}
+
+.contact-detail-text p,
+.contact-detail-text a {
+  font-size: clamp(14px, 2.5vw, 16px);
+  color: var(--charcoal);
+  line-height: 1.5;
+  font-weight: 400;
+  transition: color var(--transition);
+}
+
+.contact-detail-text a:hover { color: var(--gold); }
+
+.contact-social-card {
+  background: var(--charcoal);
+  border-radius: var(--radius);
+  padding: clamp(28px, 5vw, 44px);
+  color: var(--white);
+}
+
+.contact-social-card h3 {
+  font-size: clamp(22px, 4vw, 30px);
+  color: var(--white);
+  margin-bottom: 8px;
+}
+
+.contact-social-card p {
+  font-size: 14px;
+  color: rgba(255,255,255,0.6);
+  margin-bottom: 28px;
+  line-height: 1.65;
+}
+
+.social-link-large {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 18px 20px;
+  background: rgba(255,255,255,0.05);
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: var(--radius);
+  color: var(--white);
+  transition: all var(--transition);
+  margin-bottom: 12px;
+  min-height: var(--touch-min);
+}
+
+.social-link-large:hover {
+  background: rgba(255,255,255,0.1);
+  border-color: rgba(255,255,255,0.25);
+  transform: translateX(4px);
+}
+
+.social-link-icon {
+  width: 40px;
+  height: 40px;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 20px;
+  flex-shrink: 0;
+}
+
+.fb-icon { background: #1877F2; }
+.wa-icon-social { background: #25D366; }
+
+.social-link-text h4 {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--white);
+  margin-bottom: 2px;
+}
+
+.social-link-text p {
+  font-size: 12px;
+  color: rgba(255,255,255,0.5);
+  margin: 0;
+}
+
+.delivery-info-card {
+  background: linear-gradient(135deg, var(--blush-light) 0%, #FAF6F1 100%);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: clamp(24px, 4vw, 36px);
+  margin-top: clamp(16px, 3vw, 24px);
+}
+
+.delivery-info-card h4 {
+  font-size: clamp(16px, 2.5vw, 20px);
+  margin-bottom: 12px;
+  color: var(--charcoal);
+}
+
+.delivery-info-card p {
+  font-size: 14px;
+  color: var(--charcoal-light);
+  line-height: 1.7;
+}
+
+/* ========================================
+   FOOTER
+   ======================================== */
+footer {
+  background: var(--charcoal);
+  color: rgba(255,255,255,0.6);
+  padding: clamp(36px, 6vw, 60px) clamp(20px, 5vw, 60px) calc(clamp(20px, 4vw, 32px) + var(--safe-bottom));
+}
+
+.footer-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr;
+  gap: clamp(28px, 5vw, 60px);
+  margin-bottom: clamp(28px, 5vw, 48px);
+}
+
+.footer-brand .nav-logo-main { font-size: 26px; color: var(--white); display: block; margin-bottom: 4px; }
+.footer-brand .nav-logo-sub { display: block; }
+.footer-brand p { font-size: 14px; line-height: 1.75; margin-top: 16px; max-width: 300px; }
+.footer-brand .bemba-footer { font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: 15px; color: var(--gold-light); margin-top: 12px; }
+
+.footer-col h4 {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 11px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--white);
+  font-weight: 600;
+  margin-bottom: 16px;
+}
+
+.footer-col ul { list-style: none; }
+.footer-col ul li { margin-bottom: 10px; }
+.footer-col ul li a {
+  font-size: 14px;
+  color: rgba(255,255,255,0.55);
+  transition: color var(--transition);
+  min-height: 32px;
+  display: inline-flex;
+  align-items: center;
+}
+.footer-col ul li a:hover { color: var(--gold); }
+
+.footer-bottom {
+  border-top: 1px solid rgba(255,255,255,0.08);
+  padding-top: clamp(20px, 3vw, 28px);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.footer-bottom p { font-size: 12px; }
+.footer-bottom-right { font-size: 12px; color: var(--gold); }
+
+/* ========================================
+   WHATSAPP FLOATING BUTTON
+   ======================================== */
+.whatsapp-float {
+  position: fixed;
+  bottom: calc(clamp(20px, 4vw, 28px) + var(--safe-bottom));
+  right: max(clamp(16px, 4vw, 28px), var(--safe-right));
+  width: 58px;
+  height: 58px;
+  background: #25D366;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 20px rgba(37,211,102,0.45);
+  z-index: 8000;
+  transition: transform var(--transition), box-shadow var(--transition);
+  text-decoration: none;
+}
+
+.whatsapp-float:hover {
+  transform: scale(1.08);
+  box-shadow: 0 6px 28px rgba(37,211,102,0.6);
+}
+
+.whatsapp-float svg {
+  width: 30px;
+  height: 30px;
+  fill: var(--white);
+}
+
+/* Pulse ring */
+.whatsapp-float::before {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  background: #25D366;
+  animation: waPulse 2.5s ease-out infinite;
+  z-index: -1;
+}
+
+@keyframes waPulse {
+  0%   { transform: scale(1); opacity: 0.6; }
+  70%  { transform: scale(1.5); opacity: 0; }
+  100% { transform: scale(1.5); opacity: 0; }
+}
+
+/* ========================================
+   CHATBOT
+   ======================================== */
+.chat-bubble {
+  position: fixed;
+  bottom: calc(clamp(20px, 4vw, 28px) + var(--safe-bottom));
+  left: max(clamp(16px, 4vw, 28px), var(--safe-left));
+  z-index: 8000;
+}
+
+.chat-toggle {
+  width: 58px;
+  height: 58px;
+  background: var(--charcoal);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  box-shadow: 0 4px 20px rgba(44,44,44,0.3);
+  transition: transform var(--transition), box-shadow var(--transition);
+  font-size: 26px;
+  border: none;
+}
+
+.chat-toggle:hover {
+  transform: scale(1.08);
+  box-shadow: 0 6px 28px rgba(44,44,44,0.4);
+}
+
+.chat-window {
+  position: absolute;
+  bottom: 70px;
+  left: 0;
+  width: clamp(280px, 85vw, 340px);
+  background: var(--white);
+  border-radius: 16px;
+  box-shadow: 0 8px 48px rgba(44,44,44,0.18);
+  overflow: hidden;
+  display: none;
+  flex-direction: column;
+  max-height: min(480px, 70svh);
+  border: 1px solid var(--border);
+}
+
+.chat-window.open { display: flex; }
+
+.chat-header {
+  background: var(--charcoal);
+  color: var(--white);
+  padding: 16px 18px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-shrink: 0;
+}
+
+.chat-header-avatar {
+  width: 38px;
+  height: 38px;
+  background: var(--gold);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 18px;
+  flex-shrink: 0;
+}
+
+.chat-header-info h4 {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--white);
+  margin-bottom: 2px;
+}
+
+.chat-header-info p {
+  font-size: 11px;
+  color: rgba(255,255,255,0.55);
+}
+
+.chat-header-close {
+  margin-left: auto;
+  width: 32px;
+  height: 32px;
+  border: none;
+  background: rgba(255,255,255,0.1);
+  border-radius: 50%;
+  color: var(--white);
+  font-size: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: background var(--transition);
+  flex-shrink: 0;
+}
+
+.chat-header-close:hover { background: rgba(255,255,255,0.2); }
+
+.chat-messages {
+  flex: 1;
+  overflow-y: auto;
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  scroll-behavior: smooth;
+  -webkit-overflow-scrolling: touch;
+}
+
+.chat-msg {
+  max-width: 88%;
+  padding: 10px 14px;
+  border-radius: 12px;
+  font-size: 13.5px;
+  line-height: 1.55;
+  animation: msgIn 0.2s ease;
+}
+
+@keyframes msgIn {
+  from { opacity: 0; transform: translateY(6px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.chat-msg.bot {
+  background: var(--blush-light);
+  color: var(--charcoal);
+  border-bottom-left-radius: 3px;
+  align-self: flex-start;
+}
+
+.chat-msg.user {
+  background: var(--charcoal);
+  color: var(--white);
+  border-bottom-right-radius: 3px;
+  align-self: flex-end;
+}
+
+.chat-quick-replies {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 7px;
+  padding: 0 16px 12px;
+  flex-shrink: 0;
+}
+
+.quick-reply {
+  padding: 7px 13px;
+  border: 1.5px solid var(--border);
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--charcoal);
+  background: var(--white);
+  cursor: pointer;
+  transition: all var(--transition);
+  white-space: nowrap;
+  min-height: 36px;
+  display: flex;
+  align-items: center;
+}
+
+.quick-reply:hover {
+  background: var(--charcoal);
+  color: var(--white);
+  border-color: var(--charcoal);
+}
+
+.chat-input-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 14px;
+  border-top: 1px solid var(--border);
+  flex-shrink: 0;
+}
+
+.chat-input {
+  flex: 1;
+  border: 1.5px solid var(--border);
+  border-radius: 24px;
+  padding: 10px 16px;
+  font-size: 13px;
+  font-family: 'DM Sans', sans-serif;
+  color: var(--charcoal);
+  background: var(--cream);
+  outline: none;
+  transition: border-color var(--transition);
+  min-height: 42px;
+  -webkit-appearance: none;
+  appearance: none;
+}
+
+.chat-input:focus { border-color: var(--gold); }
+
+.chat-send {
+  width: 40px;
+  height: 40px;
+  min-width: 40px;
+  background: var(--gold);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  border: none;
+  transition: all var(--transition);
+  flex-shrink: 0;
+}
+
+.chat-send:hover { background: var(--gold-dark); transform: scale(1.05); }
+.chat-send svg { width: 16px; height: 16px; fill: var(--white); }
+
+/* ========================================
+   ANIMATIONS
+   ======================================== */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* ========================================
+   RESPONSIVE BREAKPOINTS
+   Device coverage:
+   - iPhone SE (375px)
+   - iPhone 13/14/15 (390px)
+   - iPhone 13 Pro Max / 15 Plus (428px–430px)
+   - iPhone 16 Pro Max / 17 (430px+)
+   - Android budget phones (360px–414px)
+   - iPad mini (768px)
+   - iPad Pro (1024px)
+   - Desktop (1200px+)
+   ======================================== */
+
+/* Tablet and small desktop */
+@media (max-width: 1024px) {
+  .footer-inner { grid-template-columns: 1fr 1fr; }
+  .categories-grid { grid-template-columns: repeat(2, 1fr); }
+}
+
+/* Tablet portrait and large phones */
+@media (max-width: 768px) {
+  .nav-links { display: none; }
+  .hamburger { display: flex; }
+  .mobile-nav { display: flex; }
+
+  .hero-inner {
+    grid-template-columns: 1fr;
+    text-align: center;
+  }
+  .hero-content p { max-width: 100%; }
+  .hero-ctas { justify-content: center; }
+  .hero-stats { justify-content: center; }
+  .hero-image-wrap { max-width: 400px; margin: 0 auto; }
+  .hero-image-accent { display: none; }
+
+  .featured-grid { grid-template-columns: 1fr; }
+  .about-teaser-inner { grid-template-columns: 1fr; }
+  .about-teaser-img { max-width: 480px; margin: 0 auto; }
+  .categories-grid { grid-template-columns: repeat(2, 1fr); }
+
+  .about-story { grid-template-columns: 1fr; }
+  .about-story-imgs { max-width: 400px; margin: 0 auto; }
+
+  .contact-grid { grid-template-columns: 1fr; }
+  .footer-inner { grid-template-columns: 1fr; }
+
+  .gallery-grid { grid-template-columns: repeat(2, 1fr); }
+  .gallery-item:nth-child(5),
+  .gallery-item:nth-child(8) {
+    grid-column: span 1;
+    aspect-ratio: 1;
+  }
+}
+
+/* Mobile phones — 414px and below */
+@media (max-width: 414px) {
+  #navbar { height: 58px; }
+  .page-wrapper { padding-top: 58px; }
+  .page { top: 58px; }
+  .mobile-nav { top: 58px; }
+
+  .hero-inner { gap: 24px; }
+  .hero-ctas { flex-direction: column; align-items: center; }
+  .btn { width: 100%; max-width: 280px; }
+
+  .categories-grid { grid-template-columns: repeat(2, 1fr); gap: 10px; }
+  .cat-card { aspect-ratio: 3/4; }
+
+  .featured-grid { grid-template-columns: 1fr; }
+  .menu-grid { grid-template-columns: 1fr; }
+  .pricing-grid { grid-template-columns: 1fr; }
+  .payment-methods { grid-template-columns: repeat(2, 1fr); }
+
+  .gallery-grid { grid-template-columns: repeat(2, 1fr); gap: 6px; }
+
+  .footer-inner { grid-template-columns: 1fr; gap: 28px; }
+
+  /* Ensure chatbot doesn't overlap WA button */
+  .chat-window {
+    width: calc(100vw - 32px);
+    left: 0;
+  }
+}
+
+/* Very small screens — iPhone SE, 360px Android */
+@media (max-width: 375px) {
+  html { font-size: 15px; }
+  .hero-content h1 { font-size: 34px; }
+  .payment-methods { grid-template-columns: 1fr; }
+}
+
+/* iPhone 13 Pro Max / 15 Plus / 16 Pro Max / 17 — larger phones */
+@media (min-width: 390px) and (max-width: 430px) {
+  .hero-content h1 { font-size: 42px; }
+  .featured-grid { grid-template-columns: 1fr; }
+}
+
+/* Landscape phone */
+@media (max-height: 500px) and (orientation: landscape) {
+  .hero {
+    min-height: unset;
+    padding: 40px clamp(20px, 5vw, 60px);
+  }
+  .hero-inner {
+    grid-template-columns: 1fr 1fr;
+    text-align: left;
+  }
+  .hero-image-wrap { max-height: 280px; overflow: hidden; }
+  .mobile-nav { overflow-y: scroll; }
+}
+
+/* High DPI / Retina displays */
+@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+  .hero-pattern { background-size: 28px 28px; }
+}
+
+/* Reduce motion for accessibility */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+  .whatsapp-float::before { animation: none; }
+}
+</style>
+</head>
+<body>
+
+<!-- ========================================
+     NAVBAR
+     ======================================== -->
+<nav id="navbar">
+  <div class="nav-inner">
+    <div class="nav-logo" onclick="navigateTo('home')" role="button" aria-label="Home">
+      <span class="nav-logo-main">Cake Bwana's</span>
+      <span class="nav-logo-sub">Confectionery · Lusaka</span>
+    </div>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="#" class="active" data-page="home" onclick="navigateTo('home');return false;">Home</a></li>
+      <li><a href="#" data-page="menu" onclick="navigateTo('menu');return false;">Menu</a></li>
+      <li><a href="#" data-page="gallery" onclick="navigateTo('gallery');return false;">Gallery</a></li>
+      <li><a href="#" data-page="pricing" onclick="navigateTo('pricing');return false;">Pricing</a></li>
+      <li><a href="#" data-page="about" onclick="navigateTo('about');return false;">About</a></li>
+      <li><a href="#" data-page="contact" onclick="navigateTo('contact');return false;">Contact</a></li>
+    </ul>
+    <button class="hamburger" id="hamburger" aria-label="Open menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+<!-- Mobile Navigation -->
+<nav class="mobile-nav" id="mobileNav" role="navigation" aria-label="Mobile navigation">
+  <a href="#" data-page="home" onclick="navigateTo('home');closeMobileNav();return false;" class="active">Home</a>
+  <a href="#" data-page="menu" onclick="navigateTo('menu');closeMobileNav();return false;">Menu &amp; Cakes</a>
+  <a href="#" data-page="gallery" onclick="navigateTo('gallery');closeMobileNav();return false;">Gallery</a>
+  <a href="#" data-page="pricing" onclick="navigateTo('pricing');closeMobileNav();return false;">Pricing</a>
+  <a href="#" data-page="about" onclick="navigateTo('about');closeMobileNav();return false;">About Us</a>
+  <a href="#" data-page="contact" onclick="navigateTo('contact');closeMobileNav();return false;">Contact</a>
+  <div class="mobile-nav-footer">
+    <p>📞 <a href="tel:+260975154502" style="color:var(--gold)">+260 975 154 502</a></p>
+    <p>📍 Lusaka, Zambia &nbsp;·&nbsp; Mwaiseni! 🎂</p>
+  </div>
+</nav>
+
+<!-- ========================================
+     PAGE WRAPPER
+     ======================================== -->
+<div class="page-wrapper" id="pageWrapper">
+
+<!-- ===================== HOME PAGE ===================== -->
+<div class="page active" id="page-home">
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-bg"></div>
+    <div class="hero-pattern"></div>
+    <div class="hero-inner">
+      <div class="hero-content">
+        <div class="hero-badge">✦ Lusaka's Finest Confectionery</div>
+        <h1>Crafted with Love,<br><em>Baked to Perfection</em></h1>
+        <p>Every cake we create is a masterpiece — born from the finest ingredients, shaped by artisan hands, and delivered to make your most cherished moments unforgettable. <em>Twalikumya ukubombela imwe.</em></p>
+        <div class="hero-ctas">
+          <a href="https://wa.me/260975154502?text=Hello%20Cake%20Bwana%2C%20I%20would%20like%20to%20place%20an%20order!" class="btn btn-gold" target="_blank" rel="noopener">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+            Order via WhatsApp
+          </a>
+          <button class="btn btn-outline" onclick="navigateTo('menu')">View Our Menu</button>
+        </div>
+        <div class="hero-stats">
+          <div class="stat-item">
+            <span class="stat-num">500+</span>
+            <span class="stat-label">Cakes Made</span>
+          </div>
+          <div class="stat-item">
+            <span class="stat-num">K400</span>
+            <span class="stat-label">Starting Price</span>
+          </div>
+          <div class="stat-item">
+            <span class="stat-num">3–5</span>
+            <span class="stat-label">Day Lead Time</span>
+          </div>
+        </div>
+      </div>
+      <div class="hero-image-wrap">
+        <div class="hero-gold-bar"></div>
+        <img class="hero-image-main" src="https://i.imgur.com/B31thv4.png" alt="Luxury wedding cake by Cake Bwana's Confectionery" loading="eager" onerror="this.src='https://images.unsplash.com/photo-1578985545062-69928b1d9587?w=800'">
+        <img class="hero-image-accent" src="https://i.imgur.com/XWBZNd1.png" alt="Elegant birthday cake" loading="lazy" onerror="this.src='https://images.unsplash.com/photo-1464349095431-e9a21285b5f3?w=400'">
+      </div>
+    </div>
+  </section>
+
+  <!-- FEATURED CAKES -->
+  <section class="section">
+    <div class="section-title">
+      <span class="subtitle">Our Finest Creations</span>
+      <h2>Featured <em class="serif-italic">Cakes</em></h2>
+      <div class="divider"></div>
+      <p>Every celebration deserves something extraordinary. Handcrafted in Lusaka with love.</p>
+    </div>
+    <div class="featured-grid">
+      <div class="cake-card">
+        <img class="cake-card-img" src="https://i.imgur.com/PeqdLG1.png" alt="Elegant wedding cake" loading="lazy" onerror="this.src='https://images.unsplash.com/photo-1535141192574-5d4897c12636?w=600'">
+        <div class="cake-card-body">
+          <span class="cake-card-tag">✦ Wedding</span>
+          <h3>The Grand Romance</h3>
+          <p>Multi-tiered elegance with hand-piped florals, edible gold leaf, and silky fondant — a cake as beautiful as the moment itself.</p>
+          <span class="cake-card-price">From K2,500</span>
+        </div>
+      </div>
+      <div class="cake-card">
+        <img class="cake-card-img" src="https://i.imgur.com/CdaEOWK.png" alt="Birthday celebration cake" loading="lazy" onerror="this.src='https://images.unsplash.com/photo-1606890737304-57a1ca8a5b62?w=600'">
+        <div class="cake-card-body">
+          <span class="cake-card-tag">✦ Birthday</span>
+          <h3>The Celebration</h3>
+          <p>Vibrant, joyful, and utterly delicious. Customised to match your theme, colours, and personality perfectly.</p>
+          <span class="cake-card-price">From K400</span>
+        </div>
+      </div>
+      <div class="cake-card">
+        <img class="cake-card-img" src="https://i.imgur.com/FfjXDos.png" alt="Custom graduation cake" loading="lazy" onerror="this.src='https://images.unsplash.com/photo-1621303837174-89787a7d4729?w=600'">
+        <div class="cake-card-body">
+          <span class="cake-card-tag">✦ Graduation</span>
+          <h3>The Scholar's Crown</h3>
+          <p>Honour their achievement in the sweetest way. Tailored to their faculty, colours, and milestone moment.</p>
+          <span class="cake-card-price">From K600</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ABOUT TEASER -->
+  <div class="about-teaser">
+    <div class="about-teaser-inner">
+      <div class="about-teaser-img">
+        <img src="https://images.unsplash.com/photo-1549415812-c6d93e4d3234?w=600" alt="Cake Bwana's bakery craft" loading="lazy">
+        <img class="about-teaser-img-accent" src="https://i.imgur.com/XWBZNd1.png" alt="Artisan cake detail" loading="lazy">
+      </div>
+      <div class="about-teaser-content">
+        <span class="subtitle" style="font-size:11px;letter-spacing:0.22em;text-transform:uppercase;font-weight:600;display:block;margin-bottom:12px;">Our Story</span>
+        <h2>Where Artistry Meets <em class="serif-italic">Flavour</em></h2>
+        <p>Cake Bwana's Confectionery was born from a simple belief: every person deserves a cake that tells their story. Based in the heart of Lusaka, we are Zambia's premium artisan bakery — blending classic technique with bold African creativity.</p>
+        <p>From intimate birthdays to grand wedding receptions, we pour our soul into every tier, every petal, every slice.</p>
+        <div class="bemba">"Ifyo twalanda, tulalanda na mano." — We speak with intention, we bake with heart.</div>
+        <button class="btn btn-outline-gold" style="color:var(--gold-light);border-color:var(--gold);" onclick="navigateTo('about')">Our Full Story</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- CATEGORIES -->
+  <section class="section">
+    <div class="section-title">
+      <span class="subtitle">Browse By Category</span>
+      <h2>Every <em class="serif-italic">Occasion</em> Covered</h2>
+      <div class="divider"></div>
+    </div>
+    <div class="categories-grid">
+      <div class="cat-card" onclick="navigateTo('menu')">
+        <img src="https://images.unsplash.com/photo-1578985545062-69928b1d9587?w=500" alt="Wedding cakes" loading="lazy">
+        <div class="cat-card-overlay">
+          <h3>Wedding Cakes</h3>
+          <span>From K2,500</span>
+        </div>
+      </div>
+      <div class="cat-card" onclick="navigateTo('menu')">
+        <img src="https://images.unsplash.com/photo-1464349095431-e9a21285b5f3?w=500" alt="Birthday cakes" loading="lazy">
+        <div class="cat-card-overlay">
+          <h3>Birthday Cakes</h3>
+          <span>From K400</span>
+        </div>
+      </div>
+      <div class="cat-card" onclick="navigateTo('menu')">
+        <img src="https://images.unsplash.com/photo-1535141192574-5d4897c12636?w=500" alt="Cupcakes" loading="lazy">
+        <div class="cat-card-overlay">
+          <h3>Cupcakes</h3>
+          <span>K25 each</span>
+        </div>
+      </div>
+      <div class="cat-card" onclick="navigateTo('menu')">
+        <img src="https://i.imgur.com/FfjXDos.png" alt="Custom cakes" loading="lazy">
+        <div class="cat-card-overlay">
+          <h3>Custom &amp; Corporate</h3>
+          <span>Quote on Request</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="section" style="background:var(--white);max-width:100%;padding-bottom:clamp(48px,8vw,80px);">
+    <div style="max-width:1200px;margin:0 auto;padding:0 clamp(20px,5vw,60px);">
+      <div class="section-title">
+        <span class="subtitle">Common Questions</span>
+        <h2>Frequently <em class="serif-italic">Asked</em></h2>
+        <div class="divider"></div>
+      </div>
+      <div class="faq-list">
+        <div class="faq-item open">
+          <button class="faq-question" onclick="toggleFaq(this)" aria-expanded="true">
+            How do I place an order?
+            <span class="faq-icon">+</span>
+          </button>
+          <div class="faq-answer">
+            <div class="faq-answer-inner">Simply tap the WhatsApp button on this page or call us on +260 975 154 502. Share your occasion, date, number of guests, and any design ideas. We'll guide you through the rest! Orders must be placed at least 3–5 days in advance.</div>
+          </div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-question" onclick="toggleFaq(this)" aria-expanded="false">
+            What are your cake sizes and prices?
+            <span class="faq-icon">+</span>
+          </button>
+          <div class="faq-answer">
+            <div class="faq-answer-inner">Our standard cakes come in three sizes: Small (K400), Medium (K600), and Large (K850). Wedding cakes start from K2,500. Cupcakes are K25 each, and samoosas are K4 each. Prices may vary for highly custom designs — contact us for a quote.</div>
+          </div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-question" onclick="toggleFaq(this)" aria-expanded="false">
+            Do you deliver in Lusaka?
+            <span class="faq-icon">+</span>
+          </button>
+          <div class="faq-answer">
+            <div class="faq-answer-inner">Yes! We deliver across Lusaka city. Delivery fees depend on your location and will be confirmed when you place your order. You are also welcome to collect from our premises.</div>
+          </div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-question" onclick="toggleFaq(this)" aria-expanded="false">
+            What payment methods do you accept?
+            <span class="faq-icon">+</span>
+          </button>
+          <div class="faq-answer">
+            <div class="faq-answer-inner">We accept MTN Mobile Money, Airtel Money, Cash on Delivery, and Bank Transfer. A deposit is required to confirm your order, with the balance due before or upon delivery.</div>
+          </div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-question" onclick="toggleFaq(this)" aria-expanded="false">
+            Can I get a fully custom cake design?
+            <span class="faq-icon">+</span>
+          </button>
+          <div class="faq-answer">
+            <div class="faq-answer-inner">Absolutely — custom designs are our speciality! Send us an inspiration image or describe your vision. We handle themes, colours, characters, logos, and more. The more detail you give us, the more precisely we can bring your dream cake to life.</div>
+          </div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-question" onclick="toggleFaq(this)" aria-expanded="false">
+            How far in advance should I order?
+            <span class="faq-icon">+</span>
+          </button>
+          <div class="faq-answer">
+            <div class="faq-answer-inner">We recommend ordering at least 3–5 days in advance for standard cakes, and 1–2 weeks for complex custom or wedding cakes. Rush orders may be possible — contact us to check availability.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <span class="nav-logo-main" style="font-family:'Cormorant Garamond',serif;font-style:italic;">Cake Bwana's</span>
+        <span class="nav-logo-sub" style="font-size:10px;letter-spacing:0.25em;text-transform:uppercase;color:var(--gold);font-weight:500;display:block;margin-top:4px;">Confectionery · Lusaka</span>
+        <p>Zambia's premier artisan bakery. Every cake is a love letter to the moment it celebrates.</p>
+        <p class="bemba-footer">"Twalumba" — Thank you for choosing us. 🎂</p>
+      </div>
+      <div class="footer-col">
+        <h4>Navigate</h4>
+        <ul>
+          <li><a href="#" onclick="navigateTo('home');return false;">Home</a></li>
+          <li><a href="#" onclick="navigateTo('menu');return false;">Menu &amp; Cakes</a></li>
+          <li><a href="#" onclick="navigateTo('gallery');return false;">Gallery</a></li>
+          <li><a href="#" onclick="navigateTo('pricing');return false;">Pricing</a></li>
+          <li><a href="#" onclick="navigateTo('about');return false;">About</a></li>
+          <li><a href="#" onclick="navigateTo('contact');return false;">Contact</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Contact</h4>
+        <ul>
+          <li><a href="tel:+260975154502">📞 +260 975 154 502</a></li>
+          <li><a href="https://wa.me/260975154502" target="_blank" rel="noopener">💬 WhatsApp Us</a></li>
+          <li><a href="#">📘 Facebook Page</a></li>
+          <li><a href="#">📍 Lusaka, Zambia</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2025 Cake Bwana's Confectionery. All rights reserved.</p>
+      <span class="footer-bottom-right">Baked with ♥ in Lusaka</span>
+    </div>
+  </footer>
+
+</div><!-- /page-home -->
+
+
+<!-- ===================== MENU PAGE ===================== -->
+<div class="page" id="page-menu">
+  <div class="menu-hero">
+    <span class="subtitle" style="font-size:11px;letter-spacing:0.22em;text-transform:uppercase;font-weight:600;color:var(--gold);display:block;margin-bottom:10px;">✦ Crafted to Order</span>
+    <h1>Our <em class="serif-italic">Menu</em></h1>
+    <div class="divider"></div>
+    <p>Each creation is made fresh, to order, with the finest ingredients. Mwaiseni — welcome to our collection.</p>
+  </div>
+
+  <div class="section">
+    <div class="menu-grid">
+
+      <div class="menu-card">
+        <img src="https://i.imgur.com/B31thv4.png" alt="Wedding cake" loading="lazy" onerror="this.src='https://images.unsplash.com/photo-1578985545062-69928b1d9587?w=600'">
+        <div class="menu-card-body">
+          <div class="menu-card-tag">✦ Wedding Cakes</div>
+          <h3>Wedding Cakes</h3>
+          <p>Multi-tiered masterpieces adorned with hand-crafted sugar flowers, edible gold leaf, and flawless fondant work. From intimate garden weddings to grand ballroom receptions.</p>
+          <div class="menu-card-footer">
+            <span class="menu-card-price">From K2,500</span>
+            <a href="https://wa.me/260975154502?text=Hello!%20I%20would%20like%20to%20order%20a%20Wedding%20Cake%20please." class="btn-wa-sm" target="_blank" rel="noopener">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+              Order
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <div class="menu-card">
+        <img src="https://i.imgur.com/CdaEOWK.png" alt="Birthday cake" loading="lazy" onerror="this.src='https://images.unsplash.com/photo-1464349095431-e9a21285b5f3?w=600'">
+        <div class="menu-card-body">
+          <div class="menu-card-tag">✦ Birthday Cakes</div>
+          <h3>Birthday Cakes</h3>
+          <p>Celebrate every year in style. From children's cartoon themes to sophisticated adult designs — your birthday, your vision, our craft.</p>
+          <div class="menu-card-footer">
+            <span class="menu-card-price">K400 · K600 · K850</span>
+            <a href="https://wa.me/260975154502?text=Hello!%20I%20would%20like%20to%20order%20a%20Birthday%20Cake%20please." class="btn-wa-sm" target="_blank" rel="noopener">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+              Order
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <div class="menu-card">
+        <img src="https://i.imgur.com/FfjXDos.png" alt="Graduation cake" loading="lazy" onerror="this.src='https://images.unsplash.com/photo-1621303837174-89787a7d4729?w=600'">
+        <div class="menu-card-body">
+          <div class="menu-card-tag">✦ Graduation Cakes</div>
+          <h3>Graduation Cakes</h3>
+          <p>They worked hard for this moment. Honour their milestone with a cake as impressive as their achievement — caps, scrolls, faculty colours and all.</p>
+          <div class="menu-card-footer">
+            <span class="menu-card-price">From K600</span>
+            <a href="https://wa.me/260975154502?text=Hello!%20I%20would%20like%20to%20order%20a%20Graduation%20Cake%20please." class="btn-wa-sm" target="_blank" rel="noopener">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+              Order
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <div class="menu-card">
+        <img src="https://images.unsplash.com/photo-1535141192574-5d4897c12636?w=600" alt="Cupcakes" loading="lazy">
+        <div class="menu-card-body">
+          <div class="menu-card-tag">✦ Cupcakes</div>
+          <h3>Artisan Cupcakes</h3>
+          <p>Light, fluffy, and beautifully decorated. Perfect for parties, corporate events, or simply treating yourself. Minimum order of 12.</p>
+          <div class="menu-card-footer">
+            <span class="menu-card-price">K25 each</span>
+            <a href="https://wa.me/260975154502?text=Hello!%20I%20would%20like%20to%20order%20Cupcakes%20please." class="btn-wa-sm" target="_blank" rel="noopener">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+              Order
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <div class="menu-card">
+        <img src="https://images.unsplash.com/photo-1606890737304-57a1ca8a5b62?w=600" alt="Samoosas and pastries" loading="lazy">
+        <div class="menu-card-body">
+          <div class="menu-card-tag">✦ Samoosas &amp; Pastries</div>
+          <h3>Samoosas &amp; Pastries</h3>
+          <p>Crispy, golden, and irresistible. Our samoosas are handmade with seasoned fillings — the perfect complement to any event spread.</p>
+          <div class="menu-card-footer">
+            <span class="menu-card-price">K4 each</span>
+            <a href="https://wa.me/260975154502?text=Hello!%20I%20would%20like%20to%20order%20Samoosas%20please." class="btn-wa-sm" target="_blank" rel="noopener">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+              Order
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <div class="menu-card">
+        <img src="https://i.imgur.com/PeqdLG1.png" alt="Corporate event cakes" loading="lazy" onerror="this.src='https://images.unsplash.com/photo-1549415812-c6d93e4d3234?w=600'">
+        <div class="menu-card-body">
+          <div class="menu-card-tag">✦ Corporate</div>
+          <h3>Corporate Event Cakes</h3>
+          <p>Impress clients and celebrate your team in style. Branded cakes, product launch cakes, and corporate gifting — all crafted to reflect your company's prestige.</p>
+          <div class="menu-card-footer">
+            <span class="menu-card-price">From K850</span>
+            <a href="https://wa.me/260975154502?text=Hello!%20I%20would%20like%20to%20order%20a%20Corporate%20Cake%20please." class="btn-wa-sm" target="_blank" rel="noopener">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+              Order
+            </a>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+  <footer>
+    <div class="footer-bottom" style="border-top:none;padding-top:0;max-width:1200px;margin:0 auto;">
+      <p>© 2025 Cake Bwana's Confectionery · <a href="#" onclick="navigateTo('home');return false;" style="color:var(--gold)">Home</a></p>
+      <span class="footer-bottom-right">Baked with ♥ in Lusaka</span>
+    </div>
+  </footer>
+</div><!-- /page-menu -->
+
+
+<!-- ===================== GALLERY PAGE ===================== -->
+<div class="page" id="page-gallery">
+  <div class="menu-hero">
+    <span class="subtitle" style="font-size:11px;letter-spacing:0.22em;text-transform:uppercase;font-weight:600;color:var(--gold);display:block;margin-bottom:10px;">✦ Our Work</span>
+    <h1>The <em class="serif-italic">Gallery</em></h1>
+    <div class="divider"></div>
+    <p>A curated showcase of our finest creations. Every image tells a story of a celebration well-sweetened.</p>
+  </div>
+
+  <div class="gallery-grid">
+    <div class="gallery-item" onclick="openLightbox(0)">
+      <img src="https://i.imgur.com/B31thv4.png" alt="Luxury wedding cake" loading="lazy" onerror="this.src='https://images.unsplash.com/photo-1578985545062-69928b1d9587?w=600'">
+      <div class="gallery-item-overlay"><span class="gallery-zoom-icon">⊕</span></div>
+    </div>
+    <div class="gallery-item" onclick="openLightbox(1)">
+      <img src="https://i.imgur.com/XWBZNd1.png" alt="Birthday celebration cake" loading="lazy" onerror="this.src='https://images.unsplash.com/photo-1464349095431-e9a21285b5f3?w=600'">
+      <div class="gallery-item-overlay"><span class="gallery-zoom-icon">⊕</span></div>
+    </div>
+    <div class="gallery-item" onclick="openLightbox(2)">
+      <img src="https://i.imgur.com/PeqdLG1.png" alt="Elegant custom cake" loading="lazy" onerror="this.src='https://images.unsplash.com/photo-1535141192574-5d4897c12636?w=600'">
+      <div class="gallery-item-overlay"><span class="gallery-zoom-icon">⊕</span></div>
+    </div>
+    <div class="gallery-item" onclick="openLightbox(3)">
+      <img src="https://i.imgur.com/CdaEOWK.png" alt="Themed birthday cake" loading="lazy" onerror="this.src='https://images.unsplash.com/photo-1606890737304-57a1ca8a5b62?w=600'">
+      <div class="gallery-item-overlay"><span class="gallery-zoom-icon">⊕</span></div>
+    </div>
+    <div class="gallery-item" onclick="openLightbox(4)">
+      <img src="https://i.imgur.com/FfjXDos.png" alt="Graduation cake showcase" loading="lazy" onerror="this.src='https://images.unsplash.com/photo-1621303837174-89787a7d4729?w=600'">
+      <div class="gallery-item-overlay"><span class="gallery-zoom-icon">⊕</span></div>
+    </div>
+    <div class="gallery-item" onclick="openLightbox(5)">
+      <img src="https://images.unsplash.com/photo-1578985545062-69928b1d9587?w=600" alt="Wedding cake detail" loading="lazy">
+      <div class="gallery-item-overlay"><span class="gallery-zoom-icon">⊕</span></div>
+    </div>
+    <div class="gallery-item" onclick="openLightbox(6)">
+      <img src="https://images.unsplash.com/photo-1535141192574-5d4897c12636?w=600" alt="Elegant cake" loading="lazy">
+      <div class="gallery-item-overlay"><span class="gallery-zoom-icon">⊕</span></div>
+    </div>
+    <div class="gallery-item" onclick="openLightbox(7)">
+      <img src="https://images.unsplash.com/photo-1606890737304-57a1ca8a5b62?w=600" alt="Birthday cake detail" loading="lazy">
+      <div class="gallery-item-overlay"><span class="gallery-zoom-icon">⊕</span></div>
+    </div>
+    <div class="gallery-item" onclick="openLightbox(8)">
+      <img src="https://images.unsplash.com/photo-1621303837174-89787a7d4729?w=600" alt="Custom corporate cake" loading="lazy">
+      <div class="gallery-item-overlay"><span class="gallery-zoom-icon">⊕</span></div>
+    </div>
+    <div class="gallery-item" onclick="openLightbox(9)">
+      <img src="https://images.unsplash.com/photo-1549415812-c6d93e4d3234?w=600" alt="Pastry display" loading="lazy">
+      <div class="gallery-item-overlay"><span class="gallery-zoom-icon">⊕</span></div>
+    </div>
+    <div class="gallery-item" onclick="openLightbox(10)">
+      <img src="https://images.unsplash.com/photo-1464349095431-e9a21285b5f3?w=600" alt="Cupcake collection" loading="lazy">
+      <div class="gallery-item-overlay"><span class="gallery-zoom-icon">⊕</span></div>
+    </div>
+  </div>
+
+  <div style="text-align:center;padding:clamp(24px,4vw,40px) clamp(20px,5vw,60px);">
+    <p style="font-size:14px;color:var(--charcoal-light);margin-bottom:20px;">Love what you see? Let's create something just for you.</p>
+    <a href="https://wa.me/260975154502?text=Hello!%20I%20saw%20your%20gallery%20and%20would%20like%20to%20discuss%20an%20order." class="btn btn-gold" target="_blank" rel="noopener">Order Your Cake Today</a>
+  </div>
+
+  <footer>
+    <div class="footer-bottom" style="border-top:none;padding-top:0;max-width:1200px;margin:0 auto;">
+      <p>© 2025 Cake Bwana's Confectionery · <a href="#" onclick="navigateTo('home');return false;" style="color:var(--gold)">Home</a></p>
+      <span class="footer-bottom-right">Baked with ♥ in Lusaka</span>
+    </div>
+  </footer>
+</div><!-- /page-gallery -->
+
+
+<!-- ===================== PRICING PAGE ===================== -->
+<div class="page" id="page-pricing">
+  <div class="pricing-hero">
+    <span class="subtitle" style="font-size:11px;letter-spacing:0.22em;text-transform:uppercase;font-weight:600;display:block;margin-bottom:10px;">✦ Transparent Pricing</span>
+    <h1>Our <em class="serif-italic">Prices</em></h1>
+    <div class="divider" style="background:var(--gold);"></div>
+    <p>Premium quality at honest Zambian prices. Every kwacha you spend goes into creating something extraordinary.</p>
+  </div>
+
+  <div class="section">
+    <div class="pricing-grid">
+
+      <div class="price-card featured">
+        <div class="price-featured-badge">✦ Most Popular</div>
+        <span class="price-card-icon">🎂</span>
+        <h3>Celebration Cakes</h3>
+        <p class="price-card-desc">Birthdays, graduations, anniversaries, and more. Three sizes to suit every occasion and guest count.</p>
+        <div class="price-tiers">
+          <div class="price-tier">
+            <span class="price-tier-label">Small</span>
+            <span class="price-tier-amount">K400</span>
+          </div>
+          <div class="price-tier">
+            <span class="price-tier-label">Medium</span>
+            <span class="price-tier-amount">K600</span>
+          </div>
+          <div class="price-tier">
+            <span class="price-tier-label">Large</span>
+            <span class="price-tier-amount">K850</span>
+          </div>
+        </div>
+        <a href="https://wa.me/260975154502?text=Hello!%20I%20would%20like%20to%20order%20a%20celebration%20cake." class="btn btn-gold" style="width:100%;" target="_blank" rel="noopener">Order Now</a>
+      </div>
+
+      <div class="price-card">
+        <span class="price-card-icon">💍</span>
+        <h3>Wedding Cakes</h3>
+        <p class="price-card-desc">Multi-tiered masterpieces for your most important day. Price varies by tiers, design complexity, and guest count.</p>
+        <span class="price-single">From K2,500</span>
+        <p style="font-size:13px;color:var(--charcoal-light);margin-bottom:20px;">Contact us for a personalised quote tailored to your wedding vision.</p>
+        <a href="https://wa.me/260975154502?text=Hello!%20I%20would%20like%20a%20quote%20for%20a%20wedding%20cake." class="btn btn-outline" style="width:100%;" target="_blank" rel="noopener">Get a Quote</a>
+      </div>
+
+      <div class="price-card">
+        <span class="price-card-icon">🧁</span>
+        <h3>Cupcakes</h3>
+        <p class="price-card-desc">Individually crafted, beautifully decorated. Perfect for parties, corporate events, and gifting. Min. order: 12.</p>
+        <span class="price-single">K25 each</span>
+        <a href="https://wa.me/260975154502?text=Hello!%20I%20would%20like%20to%20order%20cupcakes." class="btn btn-outline" style="width:100%;" target="_blank" rel="noopener">Order Cupcakes</a>
+      </div>
+
+      <div class="price-card">
+        <span class="price-card-icon">🥟</span>
+        <h3>Samoosas</h3>
+        <p class="price-card-desc">Crispy, golden handmade samoosas — perfect for events and parties. Available in vegetable or meat fillings.</p>
+        <span class="price-single">K4 each</span>
+        <a href="https://wa.me/260975154502?text=Hello!%20I%20would%20like%20to%20order%20samoosas." class="btn btn-outline" style="width:100%;" target="_blank" rel="noopener">Order Samoosas</a>
+      </div>
+
+      <div class="price-card">
+        <span class="price-card-icon">🏢</span>
+        <h3>Corporate Cakes</h3>
+        <p class="price-card-desc">Branded cakes for product launches, company anniversaries, and team celebrations. Custom logos and designs.</p>
+        <span class="price-single">From K850</span>
+        <a href="https://wa.me/260975154502?text=Hello!%20I%20would%20like%20a%20corporate%20cake%20quote." class="btn btn-outline" style="width:100%;" target="_blank" rel="noopener">Enquire</a>
+      </div>
+
+      <div class="price-card">
+        <span class="price-card-icon">🎓</span>
+        <h3>Graduation Cakes</h3>
+        <p class="price-card-desc">Honour their hard work with a cake as monumental as their degree. Customised by faculty and university colours.</p>
+        <span class="price-single">From K600</span>
+        <a href="https://wa.me/260975154502?text=Hello!%20I%20would%20like%20to%20order%20a%20graduation%20cake." class="btn btn-outline" style="width:100%;" target="_blank" rel="noopener">Order Now</a>
+      </div>
+
+    </div>
+
+    <!-- Lead time banner -->
+    <div style="margin-top:clamp(36px,6vw,64px);">
+      <div class="lead-banner">
+        <span style="font-size:28px;display:block;margin-bottom:12px;">⏰</span>
+        <h3>Order Lead Time</h3>
+        <p>To ensure your cake is crafted to perfection, please place orders at least <strong>3–5 days</strong> in advance. Wedding and complex custom cakes require <strong>1–2 weeks</strong> notice. Rush orders may be possible — contact us to check availability.</p>
+        <a href="https://wa.me/260975154502?text=Hello!%20I%20would%20like%20to%20check%20availability%20for%20a%20cake." class="btn btn-gold" target="_blank" rel="noopener">Check Availability</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Payment methods -->
+  <div class="payment-section">
+    <div class="payment-inner">
+      <span class="subtitle" style="font-size:11px;letter-spacing:0.22em;text-transform:uppercase;font-weight:600;color:var(--gold);display:block;margin-bottom:10px;">✦ Payment Options</span>
+      <h2>Easy, Flexible <em class="serif-italic">Payment</em></h2>
+      <div class="divider" style="background:var(--gold);"></div>
+      <p>We accept multiple payment methods for your convenience. A deposit is required to confirm your order.</p>
+      <div class="payment-methods">
+        <div class="payment-method">
+          <span class="payment-method-icon">📱</span>
+          <h4>MTN Mobile Money</h4>
+          <p>Pay instantly via MTN MoMo on any phone</p>
+        </div>
+        <div class="payment-method">
+          <span class="payment-method-icon">📲</span>
+          <h4>Airtel Money</h4>
+          <p>Fast and secure Airtel Money transfers</p>
+        </div>
+        <div class="payment-method">
+          <span class="payment-method-icon">💵</span>
+          <h4>Cash on Delivery</h4>
+          <p>Pay in cash when your order is delivered</p>
+        </div>
+        <div class="payment-method">
+          <span class="payment-method-icon">🏦</span>
+          <h4>Bank Transfer</h4>
+          <p>Direct bank transfer — details provided on request</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <footer>
+    <div class="footer-bottom" style="border-top:none;padding-top:0;max-width:1200px;margin:0 auto;">
+      <p>© 2025 Cake Bwana's Confectionery · <a href="#" onclick="navigateTo('home');return false;" style="color:var(--gold)">Home</a></p>
+      <span class="footer-bottom-right">Baked with ♥ in Lusaka</span>
+    </div>
+  </footer>
+</div><!-- /page-pricing -->
+
+
+<!-- ===================== ABOUT PAGE ===================== -->
+<div class="page" id="page-about">
+  <div class="about-hero" style="width:100%;">
+    <div class="about-hero-inner">
+      <span class="subtitle" style="font-size:11px;letter-spacing:0.22em;text-transform:uppercase;font-weight:600;color:var(--gold);display:block;margin-bottom:10px;">✦ Our Story</span>
+      <h1>About <em class="serif-italic">Cake Bwana's</em></h1>
+      <div class="divider" style="background:var(--gold);"></div>
+      <p>A Zambian bakery born from passion, grown through trust, and dedicated to making every celebration sweeter.</p>
+    </div>
+  </div>
+
+  <section class="section">
+    <div class="about-story">
+      <div class="about-story-imgs">
+        <img class="about-story-img-main" src="https://images.unsplash.com/photo-1549415812-c6d93e4d3234?w=600" alt="Artisan baking process" loading="lazy">
+        <img class="about-story-img-accent" src="https://i.imgur.com/PeqdLG1.png" alt="Beautiful cake detail" loading="lazy" onerror="this.src='https://images.unsplash.com/photo-1535141192574-5d4897c12636?w=400'">
+      </div>
+      <div class="about-story-content">
+        <span class="subtitle">Mwaiseni — Welcome</span>
+        <h2>Lusaka's <em class="serif-italic">Artisan</em> Bakery</h2>
+        <p>Cake Bwana's Confectionery was founded with one unwavering belief: that every person — no matter the occasion — deserves a cake that is truly extraordinary. We are a registered Zambian business, proud to serve both our local community in Lusaka and our beloved diaspora customers who send love home through every order.</p>
+        <p>Our bakers are artisans. Each cake is hand-crafted, never rushed, never mass-produced. From the moment you place your order to the moment the candles are lit, we are with you every step of the way.</p>
+        <p>We serve Lusaka both through our physical premises and online via WhatsApp — making it effortlessly easy to order the perfect cake from anywhere in the world.</p>
+        <div class="bemba-quote">"Ukubombela abantu nge calo — to serve people is to serve the nation." We take that seriously.</div>
+        <a href="https://wa.me/260975154502?text=Mwaiseni!%20I%20would%20like%20to%20place%20an%20order." class="btn btn-gold" target="_blank" rel="noopener">Order With Us Today</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" style="background:var(--blush-light);max-width:100%;padding-bottom:clamp(48px,8vw,80px);">
+    <div style="max-width:1200px;margin:0 auto;padding:0 clamp(20px,5vw,60px);">
+      <div class="section-title">
+        <span class="subtitle">What We Stand For</span>
+        <h2>Our <em class="serif-italic">Values</em></h2>
+        <div class="divider"></div>
+      </div>
+      <div class="values-grid">
+        <div class="value-card">
+          <span class="value-card-icon">🎨</span>
+          <h3>Artistry</h3>
+          <p>Every cake is a canvas. We approach each creation as a work of edible art, unique to you and your moment.</p>
+        </div>
+        <div class="value-card">
+          <span class="value-card-icon">🌿</span>
+          <h3>Quality</h3>
+          <p>Only the finest ingredients pass through our kitchen. We never compromise on what goes into your celebration.</p>
+        </div>
+        <div class="value-card">
+          <span class="value-card-icon">🤝</span>
+          <h3>Trust</h3>
+          <p>We are a real, registered Zambian business. Your order is in safe, experienced, and dedicated hands.</p>
+        </div>
+        <div class="value-card">
+          <span class="value-card-icon">❤️</span>
+          <h3>Community</h3>
+          <p>Proudly rooted in Lusaka. We serve our neighbours, our city, and Zambians everywhere with equal love.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="footer-bottom" style="border-top:none;padding-top:0;max-width:1200px;margin:0 auto;">
+      <p>© 2025 Cake Bwana's Confectionery · <a href="#" onclick="navigateTo('home');return false;" style="color:var(--gold)">Home</a></p>
+      <span class="footer-bottom-right">Baked with ♥ in Lusaka</span>
+    </div>
+  </footer>
+</div><!-- /page-about -->
+
+
+<!-- ===================== CONTACT PAGE ===================== -->
+<div class="page" id="page-contact">
+  <div class="contact-hero">
+    <span class="subtitle" style="font-size:11px;letter-spacing:0.22em;text-transform:uppercase;font-weight:600;color:var(--gold);display:block;margin-bottom:10px;">✦ Get in Touch</span>
+    <h1><em class="serif-italic">Contact</em> Us</h1>
+    <div class="divider"></div>
+    <p>We'd love to hear from you. Reach out via WhatsApp, call us, or connect on Facebook. Twalumba — we're grateful for every enquiry.</p>
+  </div>
+
+  <section class="section">
+    <div class="contact-grid">
+      <div>
+        <div class="contact-info-card">
+          <h3>Get in <em class="serif-italic">Touch</em></h3>
+          <div class="contact-detail">
+            <div class="contact-detail-icon">📞</div>
+            <div class="contact-detail-text">
+              <h4>Phone</h4>
+              <a href="tel:+260975154502">+260 975 154 502</a>
+            </div>
+          </div>
+          <div class="contact-detail">
+            <div class="contact-detail-icon">💬</div>
+            <div class="contact-detail-text">
+              <h4>WhatsApp</h4>
+              <a href="https://wa.me/260975154502" target="_blank" rel="noopener">+260 975 154 502</a>
+            </div>
+          </div>
+          <div class="contact-detail">
+            <div class="contact-detail-icon">📍</div>
+            <div class="contact-detail-text">
+              <h4>Location</h4>
+              <p>Lusaka, Zambia<br><span style="font-size:13px;color:var(--charcoal-light);">Physical shop + Online orders</span></p>
+            </div>
+          </div>
+          <div class="contact-detail">
+            <div class="contact-detail-icon">🕐</div>
+            <div class="contact-detail-text">
+              <h4>Order Lead Time</h4>
+              <p>3–5 days standard<br><span style="font-size:13px;color:var(--charcoal-light);">1–2 weeks for wedding cakes</span></p>
+            </div>
+          </div>
+          <div class="contact-detail">
+            <div class="contact-detail-icon">🚚</div>
+            <div class="contact-detail-text">
+              <h4>Delivery Area</h4>
+              <p>Lusaka city only</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="delivery-info-card">
+          <h4>📦 How to Order</h4>
+          <p>1. Tap the WhatsApp button or call us<br>
+          2. Tell us your occasion, date &amp; cake size<br>
+          3. We'll confirm availability &amp; price<br>
+          4. Pay a deposit to secure your order<br>
+          5. We bake, you celebrate 🎂</p>
+        </div>
+      </div>
+
+      <div>
+        <div class="contact-social-card">
+          <h3>Follow <em class="serif-italic">&amp; Connect</em></h3>
+          <p>Stay inspired, see our latest creations, and place orders directly through our social channels. Mwaiseni!</p>
+
+          <a href="https://wa.me/260975154502" class="social-link-large" target="_blank" rel="noopener">
+            <div class="social-link-icon wa-icon-social">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+            </div>
+            <div class="social-link-text">
+              <h4>WhatsApp</h4>
+              <p>Order directly — we respond fast!</p>
+            </div>
+            <span style="color:rgba(255,255,255,0.4);margin-left:auto;">→</span>
+          </a>
+
+          <a href="#" class="social-link-large">
+            <div class="social-link-icon fb-icon">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="white"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+            </div>
+            <div class="social-link-text">
+              <h4>Facebook</h4>
+              <p>See our latest cakes &amp; updates</p>
+            </div>
+            <span style="color:rgba(255,255,255,0.4);margin-left:auto;">→</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <span class="nav-logo-main" style="font-family:'Cormorant Garamond',serif;font-style:italic;">Cake Bwana's</span>
+        <span class="nav-logo-sub" style="font-size:10px;letter-spacing:0.25em;text-transform:uppercase;color:var(--gold);font-weight:500;display:block;margin-top:4px;">Confectionery · Lusaka</span>
+        <p>Zambia's premier artisan bakery, crafting extraordinary cakes for life's most precious moments.</p>
+        <p class="bemba-footer">"Twalumba" — Thank you. 🎂</p>
+      </div>
+      <div class="footer-col">
+        <h4>Navigate</h4>
+        <ul>
+          <li><a href="#" onclick="navigateTo('home');return false;">Home</a></li>
+          <li><a href="#" onclick="navigateTo('menu');return false;">Menu</a></li>
+          <li><a href="#" onclick="navigateTo('gallery');return false;">Gallery</a></li>
+          <li><a href="#" onclick="navigateTo('pricing');return false;">Pricing</a></li>
+          <li><a href="#" onclick="navigateTo('about');return false;">About</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Contact</h4>
+        <ul>
+          <li><a href="tel:+260975154502">📞 +260 975 154 502</a></li>
+          <li><a href="https://wa.me/260975154502" target="_blank" rel="noopener">💬 WhatsApp</a></li>
+          <li><a href="#">📘 Facebook</a></li>
+          <li><a href="#">📍 Lusaka, Zambia</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2025 Cake Bwana's Confectionery. All rights reserved.</p>
+      <span class="footer-bottom-right">Baked with ♥ in Lusaka</span>
+    </div>
+  </footer>
+</div><!-- /page-contact -->
+
+</div><!-- /page-wrapper -->
+
+<!-- ========================================
+     LIGHTBOX
+     ======================================== -->
+<div class="lightbox" id="lightbox" onclick="closeLightboxOnBg(event)" role="dialog" aria-modal="true" aria-label="Image viewer">
+  <button class="lightbox-close" onclick="closeLightbox()" aria-label="Close">&times;</button>
+  <button class="lightbox-nav lightbox-prev" onclick="lightboxNav(-1)" aria-label="Previous">&#8249;</button>
+  <img id="lightboxImg" src="" alt="Gallery image">
+  <button class="lightbox-nav lightbox-next" onclick="lightboxNav(1)" aria-label="Next">&#8250;</button>
+</div>
+
+<!-- ========================================
+     WHATSAPP FLOATING BUTTON
+     ======================================== -->
+<a href="https://wa.me/260975154502?text=Hello%20Cake%20Bwana%2C%20I%20would%20like%20to%20place%20an%20order!"
+   class="whatsapp-float"
+   target="_blank"
+   rel="noopener"
+   aria-label="Order on WhatsApp">
+  <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+    <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+  </svg>
+</a>
+
+<!-- ========================================
+     CHATBOT
+     ======================================== -->
+<div class="chat-bubble" id="chatBubble">
+  <div class="chat-window" id="chatWindow" role="dialog" aria-modal="true" aria-label="Chat with us">
+    <div class="chat-header">
+      <div class="chat-header-avatar">🎂</div>
+      <div class="chat-header-info">
+        <h4>Cake Bwana's</h4>
+        <p>Ask us anything — we're here!</p>
+      </div>
+      <button class="chat-header-close" onclick="toggleChat()" aria-label="Close chat">&times;</button>
+    </div>
+    <div class="chat-messages" id="chatMessages"></div>
+    <div class="chat-quick-replies" id="quickReplies">
+      <button class="quick-reply" onclick="sendQuick('Prices')">💰 Prices</button>
+      <button class="quick-reply" onclick="sendQuick('How to order')">📋 How to order</button>
+      <button class="quick-reply" onclick="sendQuick('Delivery')">🚚 Delivery</button>
+      <button class="quick-reply" onclick="sendQuick('Payment')">💳 Payment</button>
+      <button class="quick-reply" onclick="sendQuick('Lead time')">⏰ Lead time</button>
+    </div>
+    <div class="chat-input-row">
+      <input class="chat-input" id="chatInput" type="text" placeholder="Type a message…" maxlength="200"
+        onkeydown="if(event.key==='Enter')sendMessage()"
+        autocomplete="off" autocorrect="off" spellcheck="false">
+      <button class="chat-send" onclick="sendMessage()" aria-label="Send message">
+        <svg viewBox="0 0 24 24"><path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z"/></svg>
+      </button>
+    </div>
+  </div>
+  <button class="chat-toggle" id="chatToggle" onclick="toggleChat()" aria-label="Open chat" aria-expanded="false">😊</button>
+</div>
+
+<!-- ========================================
+     JAVASCRIPT
+     ======================================== -->
+<script>
+/* ============ NAVIGATION ============ */
+let currentPage = 'home';
+let isTransitioning = false;
+
+function navigateTo(pageId) {
+  if (pageId === currentPage || isTransitioning) return;
+  isTransitioning = true;
+
+  const outgoing = document.getElementById('page-' + currentPage);
+  const incoming = document.getElementById('page-' + pageId);
+
+  if (!incoming) { isTransitioning = false; return; }
+
+  // Slide out current
+  outgoing.classList.remove('active');
+  outgoing.classList.add('slide-out');
+
+  // Slide in new
+  incoming.classList.add('active');
+  incoming.style.opacity = '0';
+
+  // Scroll to top
+  window.scrollTo({ top: 0, behavior: 'instant' });
+
+  setTimeout(() => {
+    outgoing.classList.remove('slide-out');
+    incoming.style.opacity = '';
+    currentPage = pageId;
+    isTransitioning = false;
+    updateNavLinks(pageId);
+  }, 380);
+}
+
+function updateNavLinks(pageId) {
+  // Desktop
+  document.querySelectorAll('.nav-links a').forEach(a => {
+    a.classList.toggle('active', a.dataset.page === pageId);
+  });
+  // Mobile
+  document.querySelectorAll('.mobile-nav a').forEach(a => {
+    a.classList.toggle('active', a.dataset.page === pageId);
+  });
+}
+
+/* ============ HAMBURGER ============ */
+const hamburger = document.getElementById('hamburger');
+const mobileNav = document.getElementById('mobileNav');
+let mobileNavOpen = false;
+
+hamburger.addEventListener('click', () => {
+  mobileNavOpen = !mobileNavOpen;
+  hamburger.classList.toggle('open', mobileNavOpen);
+  hamburger.setAttribute('aria-expanded', mobileNavOpen);
+  mobileNav.classList.toggle('open', mobileNavOpen);
+  document.body.style.overflow = mobileNavOpen ? 'hidden' : '';
+});
+
+function closeMobileNav() {
+  mobileNavOpen = false;
+  hamburger.classList.remove('open');
+  hamburger.setAttribute('aria-expanded', 'false');
+  mobileNav.classList.remove('open');
+  document.body.style.overflow = '';
+}
+
+// Close on escape
+document.addEventListener('keydown', e => {
+  if (e.key === 'Escape') {
+    if (mobileNavOpen) closeMobileNav();
+    if (lightboxOpen) closeLightbox();
+    if (chatOpen) toggleChat();
+  }
+});
+
+/* ============ NAVBAR SCROLL ============ */
+const navbar = document.getElementById('navbar');
+let lastScroll = 0;
+
+window.addEventListener('scroll', () => {
+  const s = window.scrollY;
+  navbar.classList.toggle('scrolled', s > 20);
+  lastScroll = s;
+}, { passive: true });
+
+/* ============ FAQ ============ */
+function toggleFaq(btn) {
+  const item = btn.closest('.faq-item');
+  const isOpen = item.classList.contains('open');
+
+  // Close all
+  document.querySelectorAll('.faq-item.open').forEach(el => {
+    el.classList.remove('open');
+    el.querySelector('.faq-question').setAttribute('aria-expanded', 'false');
+  });
+
+  // Open clicked if it was closed
+  if (!isOpen) {
+    item.classList.add('open');
+    btn.setAttribute('aria-expanded', 'true');
+  }
+}
+
+/* ============ LIGHTBOX ============ */
+const galleryImages = [
+  'https://i.imgur.com/B31thv4.png',
+  'https://i.imgur.com/XWBZNd1.png',
+  'https://i.imgur.com/PeqdLG1.png',
+  'https://i.imgur.com/CdaEOWK.png',
+  'https://i.imgur.com/FfjXDos.png',
+  'https://images.unsplash.com/photo-1578985545062-69928b1d9587?w=800',
+  'https://images.unsplash.com/photo-1535141192574-5d4897c12636?w=800',
+  'https://images.unsplash.com/photo-1606890737304-57a1ca8a5b62?w=800',
+  'https://images.unsplash.com/photo-1621303837174-89787a7d4729?w=800',
+  'https://images.unsplash.com/photo-1549415812-c6d93e4d3234?w=800',
+  'https://images.unsplash.com/photo-1464349095431-e9a21285b5f3?w=800'
+];
+
+let currentLightbox = 0;
+let lightboxOpen = false;
+
+function openLightbox(idx) {
+  currentLightbox = idx;
+  document.getElementById('lightboxImg').src = galleryImages[idx];
+  document.getElementById('lightbox').classList.add('open');
+  document.body.style.overflow = 'hidden';
+  lightboxOpen = true;
+}
+
+function closeLightbox() {
+  document.getElementById('lightbox').classList.remove('open');
+  document.body.style.overflow = '';
+  lightboxOpen = false;
+}
+
+function closeLightboxOnBg(e) {
+  if (e.target === document.getElementById('lightbox')) closeLightbox();
+}
+
+function lightboxNav(dir) {
+  currentLightbox = (currentLightbox + dir + galleryImages.length) % galleryImages.length;
+  const img = document.getElementById('lightboxImg');
+  img.style.opacity = '0';
+  setTimeout(() => {
+    img.src = galleryImages[currentLightbox];
+    img.style.opacity = '1';
+  }, 150);
+}
+
+// Swipe support for lightbox
+let touchStartX = 0;
+document.getElementById('lightbox').addEventListener('touchstart', e => {
+  touchStartX = e.touches[0].clientX;
+}, { passive: true });
+document.getElementById('lightbox').addEventListener('touchend', e => {
+  const diff = touchStartX - e.changedTouches[0].clientX;
+  if (Math.abs(diff) > 50) lightboxNav(diff > 0 ? 1 : -1);
+}, { passive: true });
+
+/* ============ CHATBOT ============ */
+let chatOpen = false;
+let chatGreeted = false;
+
+const responses = {
+  'price':     'Our cakes come in 3 sizes:\n• Small — K400\n• Medium — K600\n• Large — K850\n\nCupcakes are K25 each, and samoosas are K4 each. Wedding cakes start from K2,500. 🎂',
+  'prices':    'Our cakes come in 3 sizes:\n• Small — K400\n• Medium — K600\n• Large — K850\n\nCupcakes are K25 each, and samoosas are K4 each. Wedding cakes start from K2,500. 🎂',
+  'cake':      'We make Birthday, Wedding, Graduation, Corporate, and fully Custom cakes! Prices start at K400. What occasion are you planning for? 🎉',
+  'wedding':   'Our wedding cakes start from K2,500 and are fully customisable. Multi-tiered, flowers, gold leaf — whatever your vision. Tap WhatsApp to discuss! 💍',
+  'birthday':  'Birthday cakes from K400 (small), K600 (medium), K850 (large). Tell us your theme and we\'ll make it unforgettable! 🎂',
+  'cupcake':   'Cupcakes are K25 each. Minimum order of 12. Beautifully decorated to match your event. 🧁',
+  'cupcakes':  'Cupcakes are K25 each. Minimum order of 12. Beautifully decorated to match your event. 🧁',
+  'samoosa':   'Samoosas are K4 each — crispy, golden, and delicious. Available in vegetable or meat. 🥟',
+  'samoosas':  'Samoosas are K4 each — crispy, golden, and delicious. Available in vegetable or meat. 🥟',
+  'order':     'To order:\n1. Tap the WhatsApp button 📱\n2. Tell us your cake type, date & size\n3. We confirm & take a deposit\n4. We bake, you celebrate! 🎉',
+  'how to order': 'To order:\n1. Tap the WhatsApp button 📱\n2. Tell us your cake type, date & size\n3. We confirm & take a deposit\n4. We bake, you celebrate! 🎉',
+  'delivery':  'We deliver within Lusaka city! Delivery fees depend on your area and are confirmed at order time. You can also collect from us. 🚚',
+  'deliver':   'We deliver within Lusaka city! Delivery fees depend on your area and are confirmed at order time. 📍',
+  'payment':   'We accept:\n• MTN Mobile Money 📱\n• Airtel Money 📲\n• Cash on Delivery 💵\n• Bank Transfer 🏦\n\nA deposit is required to confirm your order.',
+  'pay':       'We accept MTN Mobile Money, Airtel Money, Cash on Delivery, and Bank Transfer. A deposit confirms your order. 💳',
+  'lead time': 'Standard lead time is 3–5 days. Wedding & complex cakes need 1–2 weeks. Rush orders may be possible — WhatsApp us to check! ⏰',
+  'time':      'We need 3–5 days notice for standard cakes, 1–2 weeks for weddings. Contact us for urgent requests! ⏰',
+  'location':  'We are based in Lusaka, Zambia. We have a physical location and also serve online via WhatsApp. 📍',
+  'lusaka':    'Yes, we are proudly based in Lusaka! We deliver across the city. 🇿🇲',
+  'hello':     'Mwaiseni! 👋 Welcome to Cake Bwana\'s Confectionery! How can we help make your occasion sweeter today?',
+  'hi':        'Mwaiseni! 👋 Hello! What can we help you with today?',
+  'hey':       'Hey there! Mwaiseni! 🎂 How can we sweeten your day?',
+  'mwaiseni':  'Mwaiseni! Welcome! We\'re so glad you\'re here. Ask us anything about our cakes! 🎂',
+  'twalumba':  'Twalumba! Thank you so much! It\'s our honour to serve you. 🙏',
+};
+
+function getBotReply(text) {
+  const t = text.toLowerCase().trim();
+  for (const key in responses) {
+    if (t.includes(key)) return responses[key];
+  }
+  return "Great question! For the best and fastest answer, tap the WhatsApp button to chat with us directly. We respond quickly! 💬\n\n+260 975 154 502";
+}
+
+function addMsg(text, sender) {
+  const msgs = document.getElementById('chatMessages');
+  const div = document.createElement('div');
+  div.className = 'chat-msg ' + sender;
+  div.textContent = text;
+  msgs.appendChild(div);
+  msgs.scrollTop = msgs.scrollHeight;
+}
+
+function sendMessage() {
+  const input = document.getElementById('chatInput');
+  const val = input.value.trim();
+  if (!val) return;
+  addMsg(val, 'user');
+  input.value = '';
+  setTimeout(() => {
+    addMsg(getBotReply(val), 'bot');
+  }, 480);
+}
+
+function sendQuick(text) {
+  addMsg(text, 'user');
+  setTimeout(() => {
+    addMsg(getBotReply(text), 'bot');
+  }, 480);
+}
+
+function toggleChat() {
+  chatOpen = !chatOpen;
+  const win = document.getElementById('chatWindow');
+  const toggle = document.getElementById('chatToggle');
+  win.classList.toggle('open', chatOpen);
+  toggle.setAttribute('aria-expanded', chatOpen);
+
+  if (chatOpen && !chatGreeted) {
+    chatGreeted = true;
+    setTimeout(() => {
+      addMsg("Mwaiseni! 👋 Welcome to Cake Bwana's Confectionery! I'm here to help with pricing, orders, delivery, and more. What would you like to know?", 'bot');
+    }, 300);
+  }
+
+  if (chatOpen) {
+    setTimeout(() => document.getElementById('chatInput').focus(), 400);
+  }
+}
+
+/* ============ TOUCH & SWIPE NAV SUPPORT ============ */
+// Swipe between pages on mobile
+let pageSwipeStart = 0;
+const pages = ['home','menu','gallery','pricing','about','contact'];
+
+document.getElementById('pageWrapper').addEventListener('touchstart', e => {
+  pageSwipeStart = e.touches[0].clientX;
+}, { passive: true });
+
+document.getElementById('pageWrapper').addEventListener('touchend', e => {
+  // Only swipe-nav if not in lightbox or chatbot
+  if (lightboxOpen || chatOpen) return;
+  const diff = pageSwipeStart - e.changedTouches[0].clientX;
+  if (Math.abs(diff) > 80) {
+    const idx = pages.indexOf(currentPage);
+    if (diff > 0 && idx < pages.length - 1) navigateTo(pages[idx + 1]);
+    if (diff < 0 && idx > 0) navigateTo(pages[idx - 1]);
+  }
+}, { passive: true });
+
+/* ============ INIT ============ */
+document.addEventListener('DOMContentLoaded', () => {
+  updateNavLinks('home');
+});
+</script>
+</body>
+</html>
